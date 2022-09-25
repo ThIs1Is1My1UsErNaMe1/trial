@@ -10,6 +10,10 @@ const practice = document.getElementById("practice");
 const practiceCard = document.getElementById("practice-card")
 const closeBtnPractice = document.getElementById("close-btn-practice");
 const titleText = document.getElementById("text");
+const submitAnswerBtn = document.getElementById("submit-user-input");
+const practiceFront = document.getElementById("practice-card-front")
+const practiceInputCon = document.getElementById("practice-user-input")
+const practiceUserGrade =document.getElementById("practice-user-grade")
 let editBool = false;
 //Add question when user clicks 'Add Flashcard' button
 addQuestion.addEventListener("click", () => {
@@ -28,9 +32,11 @@ addQuestion.addEventListener("click", () => {
 practice.addEventListener("click", () => {
     titleText.classList.add("hide");
     container.classList.add("hide");
+    practiceUserGrade.classList.add("hide")
     question.value = "";
     answer.value = "";
     practiceCard.classList.remove("hide");
+    practiceInputCon.classList.remove("hide");
     data = {
       "question":question.value,
       "answer":answer.value,
@@ -56,6 +62,9 @@ closeBtnPractice.addEventListener(
       container.classList.remove("hide");
       titleText.classList.remove("hide");
       practiceCard.classList.add("hide");
+      practiceInputCon.classList.add("hide");
+      practiceUserGrade.classList.add("hide");
+      practiceFront.innerHTML="Flashcard Name";
       if (editBool) {
         editBool = false;
         submitQuestion();
@@ -146,3 +155,10 @@ const disableButtons = (value) => {
     element.disabled = value;
   });
 };
+submitAnswerBtn.addEventListener("click", () => {
+    practiceFront.innerHTML = "Answer";
+    practiceInputCon.classList.add("hide");
+    practiceUserGrade.classList.remove("hide");
+
+ 
+});
